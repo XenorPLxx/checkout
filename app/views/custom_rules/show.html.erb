@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @custom_rule.product %>
+</p>
+
+<p>
+  <strong>Rule:</strong>
+  <%= @custom_rule.rule %>
+</p>
+
+<p>
+  <strong>Date from:</strong>
+  <%= @custom_rule.date_from %>
+</p>
+
+<p>
+  <strong>Date to:</strong>
+  <%= @custom_rule.date_to %>
+</p>
+
+<%= link_to 'Edit', edit_custom_rule_path(@custom_rule) %> |
+<%= link_to 'Back', custom_rules_path %>

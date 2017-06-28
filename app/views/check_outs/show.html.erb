@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Closed:</strong>
+  <%= @check_out.closed %>
+</p>
+
+<p>
+  <strong>Date started:</strong>
+  <%= @check_out.date_started %>
+</p>
+
+<p>
+  <strong>Date closed:</strong>
+  <%= @check_out.date_closed %>
+</p>
+
+<p>
+  <strong>Final total:</strong>
+  <%= @check_out.final_total %>
+</p>
+
+<%= link_to 'Edit', edit_check_out_path(@check_out) %> |
+<%= link_to 'Back', check_outs_path %>

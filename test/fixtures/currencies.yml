@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  abbr: MyString
+  description: MyString
+  is_base: false
+
+two:
+  abbr: MyString
+  description: MyString
+  is_base: false

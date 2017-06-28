@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @check_out_product.product %>
+</p>
+
+<p>
+  <strong>Check out:</strong>
+  <%= @check_out_product.check_out %>
+</p>
+
+<p>
+  <strong>Date added:</strong>
+  <%= @check_out_product.date_added %>
+</p>
+
+<%= link_to 'Edit', edit_check_out_product_path(@check_out_product) %> |
+<%= link_to 'Back', check_out_products_path %>

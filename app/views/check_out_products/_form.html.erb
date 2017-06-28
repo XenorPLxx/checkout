@@ -1,0 +1,32 @@
+<%= form_with(model: check_out_product, local: true) do |form| %>
+  <% if check_out_product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(check_out_product.errors.count, "error") %> prohibited this check_out_product from being saved:</h2>
+
+      <ul>
+      <% check_out_product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :product_id %>
+    <%= form.text_field :product_id, id: :check_out_product_product_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :check_out_id %>
+    <%= form.text_field :check_out_id, id: :check_out_product_check_out_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_added %>
+    <%= form.date_select :date_added, id: :check_out_product_date_added %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

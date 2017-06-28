@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Custom Rules</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Rule</th>
+      <th>Date from</th>
+      <th>Date to</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @custom_rules.each do |custom_rule| %>
+      <tr>
+        <td><%= custom_rule.product %></td>
+        <td><%= custom_rule.rule %></td>
+        <td><%= custom_rule.date_from %></td>
+        <td><%= custom_rule.date_to %></td>
+        <td><%= link_to 'Show', custom_rule %></td>
+        <td><%= link_to 'Edit', edit_custom_rule_path(custom_rule) %></td>
+        <td><%= link_to 'Destroy', custom_rule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Custom Rule', new_custom_rule_path %>

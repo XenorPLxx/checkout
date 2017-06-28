@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Check Outs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Closed</th>
+      <th>Date started</th>
+      <th>Date closed</th>
+      <th>Final total</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @check_outs.each do |check_out| %>
+      <tr>
+        <td><%= check_out.closed %></td>
+        <td><%= check_out.date_started %></td>
+        <td><%= check_out.date_closed %></td>
+        <td><%= check_out.final_total %></td>
+        <td><%= link_to 'Show', check_out %></td>
+        <td><%= link_to 'Edit', edit_check_out_path(check_out) %></td>
+        <td><%= link_to 'Destroy', check_out, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Check Out', new_check_out_path %>

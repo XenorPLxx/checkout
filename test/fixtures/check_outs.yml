@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  closed: false
+  date_started: 2017-06-28
+  date_closed: 2017-06-28
+
+two:
+  closed: false
+  date_started: 2017-06-28
+  date_closed: 2017-06-28
