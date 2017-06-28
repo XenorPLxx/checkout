@@ -13,12 +13,7 @@
 
   <div class="field">
     <%= form.label :currency_id %>
-    <%= form.text_field :currency_id, id: :product_currency_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price, id: :product_price %>
+    <%= form.select(:currency_id, Currency.all.collect {|p| [ p.abbr, p.id ] }, { include_blank: false }) %>
   </div>
 
   <div class="field">

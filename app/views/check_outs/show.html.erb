@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Closed:</strong>
-  <%= @check_out.closed %>
-</p>
-
-<p>
   <strong>Date started:</strong>
   <%= @check_out.date_started %>
 </p>
@@ -19,6 +14,9 @@
   <strong>Final total:</strong>
   <%= @check_out.final_total %>
 </p>
+
+<% @check_out_products = @check_out.check_out_products %>
+<%= render partial: 'check_out_products/index' %>
 
 <%= link_to 'Edit', edit_check_out_path(@check_out) %> |
 <%= link_to 'Back', check_outs_path %>

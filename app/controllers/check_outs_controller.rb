@@ -1,5 +1,5 @@
 class CheckOutsController < ApplicationController
-  before_action :set_check_out, only: [:show, :edit, :update, :destroy]
+  before_action :set_check_out, only: [:show, :edit, :close, :destroy, :scan]
 
   # GET /check_outs
   # GET /check_outs.json
@@ -21,29 +21,26 @@ class CheckOutsController < ApplicationController
   def edit
   end
 
-  # POST /check_outs
-  # POST /check_outs.json
-  def create
-    @check_out = CheckOut.new(check_out_params)
-
+  def scan
     respond_to do |format|
-      if @check_out.save
-        format.html { redirect_to @check_out, notice: 'Check out was successfully created.' }
-        format.json { render :show, status: :created, location: @check_out }
+      if @check_out.scan(params[:scan])
+        format.html { render :edit, notice: "Scan successful." }
+        format.json { render json: @check_out.errors, status: :unprocessable_entity }
       else
-        format.html { render :new }
+        format.html { render :edit, notice: "Product code invalid." }
         format.json { render json: @check_out.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /check_outs/1
-  # PATCH/PUT /check_outs/1.json
-  def update
+  # POST /check_outs
+  # POST /check_outs.json
+  def close
+    @check_out.close
     respond_to do |format|
-      if @check_out.update(check_out_params)
-        format.html { redirect_to @check_out, notice: 'Check out was successfully updated.' }
-        format.json { render :show, status: :ok, location: @check_out }
+      if @check_out.save
+        format.html { redirect_to @check_out, notice: 'Check out was successfully closed.' }
+        format.json { render :show, status: :created, location: @check_out }
       else
         format.html { render :edit }
         format.json { render json: @check_out.errors, status: :unprocessable_entity }
@@ -54,12 +51,14 @@ class CheckOutsController < ApplicationController
   # DELETE /check_outs/1
   # DELETE /check_outs/1.json
   def destroy
+    @check_out.check_out_products.each {|cop| cop.destroy}
     @check_out.destroy
     respond_to do |format|
       format.html { redirect_to check_outs_url, notice: 'Check out was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

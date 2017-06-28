@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628165926) do
+ActiveRecord::Schema.define(version: 20170628180032) do
 
   create_table "check_out_products", force: :cascade do |t|
     t.integer "product_id"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20170628165926) do
     t.boolean "is_base"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "locale"
+    t.decimal "value_in_base", precision: 15, scale: 2
   end
 
   create_table "custom_rules", force: :cascade do |t|
@@ -65,6 +67,7 @@ ActiveRecord::Schema.define(version: 20170628165926) do
     t.date "date_to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "price", precision: 15, scale: 2
     t.index ["product_id"], name: "index_rules_on_product_id"
   end
 

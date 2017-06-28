@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Closed</th>
       <th>Date started</th>
       <th>Date closed</th>
       <th>Final total</th>
@@ -16,12 +15,11 @@
   <tbody>
     <% @check_outs.each do |check_out| %>
       <tr>
-        <td><%= check_out.closed %></td>
         <td><%= check_out.date_started %></td>
         <td><%= check_out.date_closed %></td>
-        <td><%= check_out.final_total %></td>
+        <td><%= number_to_currency(check_out.final_total, locale: 'pl') %></td>
         <td><%= link_to 'Show', check_out %></td>
-        <td><%= link_to 'Edit', edit_check_out_path(check_out) %></td>
+        <td><%= link_to 'Edit', edit_check_out_path(check_out) if check_out.date_closed.nil? %></td>
         <td><%= link_to 'Destroy', check_out, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

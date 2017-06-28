@@ -2,12 +2,17 @@
 
 <p>
   <strong>Product:</strong>
-  <%= @rule.product %>
+  <%= @rule.product.description %>
 </p>
 
 <p>
   <strong>Count:</strong>
   <%= @rule.count %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= number_to_currency(@rule.price, locale: @rule.product.currency.locale) %>
 </p>
 
 <p>

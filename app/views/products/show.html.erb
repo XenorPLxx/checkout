@@ -2,17 +2,12 @@
 
 <p>
   <strong>Currency:</strong>
-  <%= @product.currency %>
+  <%= @product.currency.abbr %>
 </p>
 
 <p>
   <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
+  <%= number_to_currency(@product.price, locale: @product.currency.locale) %>
 </p>
 
 <p>

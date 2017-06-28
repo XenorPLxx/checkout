@@ -13,12 +13,17 @@
 
   <div class="field">
     <%= form.label :product_id %>
-    <%= form.text_field :product_id, id: :rule_product_id %>
+    <%= form.select(:product_id, Product.all.collect {|p| [ p.description, p.id ] }, { include_blank: false }) %>
   </div>
 
   <div class="field">
     <%= form.label :count %>
     <%= form.number_field :count, id: :rule_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price, id: :price_count %>
   </div>
 
   <div class="field">

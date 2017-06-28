@@ -7,6 +7,7 @@
     <tr>
       <th>Product</th>
       <th>Count</th>
+      <th>Price</th>
       <th>Date from</th>
       <th>Date to</th>
       <th colspan="3"></th>
@@ -16,8 +17,9 @@
   <tbody>
     <% @rules.each do |rule| %>
       <tr>
-        <td><%= rule.product %></td>
+        <td><%= rule.product.description %></td>
         <td><%= rule.count %></td>
+        <td><%= number_to_currency(rule.price, locale: rule.product.currency.locale) %></td>
         <td><%= rule.date_from %></td>
         <td><%= rule.date_to %></td>
         <td><%= link_to 'Show', rule %></td>

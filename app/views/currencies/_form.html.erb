@@ -22,6 +22,16 @@
   </div>
 
   <div class="field">
+    <%= form.label :locale %>
+    <%= form.text_field :locale, id: :currency_locale %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value_in_base %>
+    <%= form.text_field :value_in_base, id: :currency_value_in_base %>
+  </div>
+
+  <div class="field">
     <%= form.label :is_base %>
     <%= form.check_box :is_base, id: :currency_is_base %>
   </div>

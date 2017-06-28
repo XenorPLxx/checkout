@@ -1,3 +1,15 @@
+<%= form_with(url: "/check_outs/scan", local: true) do |form| %>
+  <div class="field">
+    <%= form.label :scan %>
+    <%= form.text_field :scan %>
+    <%= form.hidden_field :id, value: check_out.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Scan" %>
+  </div>
+<% end %>
+
 <%= form_with(model: check_out, local: true) do |form| %>
   <% if check_out.errors.any? %>
     <div id="error_explanation">
@@ -21,7 +33,15 @@
     <%= form.date_select :date_closed, id: :check_out_date_closed %>
   </div>
 
+  <% @check_out_products = check_out.check_out_products %>
+  <%= render partial: 'check_out_products/index' %>
+
+  <p>
+    <strong>Total:</strong>
+    <%= number_to_currency(check_out.total, locale: 'pl') %>
+  </p>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Close checkout" %>
   </div>
 <% end %>

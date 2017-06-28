@@ -7,6 +7,8 @@
     <tr>
       <th>Abbr</th>
       <th>Description</th>
+      <th>Locale</th>
+      <th>Value in base</th>
       <th>Is base</th>
       <th colspan="3"></th>
     </tr>
@@ -17,6 +19,8 @@
       <tr>
         <td><%= currency.abbr %></td>
         <td><%= currency.description %></td>
+        <td><%= currency.locale %></td>
+        <td><%= currency.value_in_base %></td>
         <td><%= currency.is_base %></td>
         <td><%= link_to 'Show', currency %></td>
         <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
