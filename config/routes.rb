@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :custom_rules
-  root 'check_outs#new'
+  root 'check_outs#index'
   resources :check_out_products
   post 'check_outs/scan' => 'check_outs#scan'
   patch 'check_outs/:id' => 'check_outs#close'
