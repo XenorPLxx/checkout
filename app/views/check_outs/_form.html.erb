@@ -37,8 +37,8 @@
   <%= render partial: 'check_out_products/index' %>
 
   <p>
-    <strong>Total:</strong>
-    <%= number_to_currency(check_out.total, locale: 'pl') %>
+    <strong>Total (with promos):</strong>
+    <%= number_to_currency(check_out.total, locale: Currency.find_by(is_base: true).locale) %>
   </p>
 
   <div class="actions">

@@ -1,6 +1,7 @@
 class Rule < ApplicationRecord
-  belongs_to :product
-  validates_presence_of :product_id, :count, :date_from, :date_to, :price
+  belongs_to :product 
+  belongs_to :currency
+  validates_presence_of :product_id, :count, :date_from, :date_to, :price, :currency_id
   validates :count, numericality: { only_integer: true, greater_than: 0 }
   validate :crossrule
   validate :dates_continuity

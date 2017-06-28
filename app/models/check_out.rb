@@ -24,8 +24,34 @@ class CheckOut < ApplicationRecord
 
   def total
     total = 0
-    self.check_out_products.each do |check_out_product|
-      total += check_out_product.product.price
+    # iteruj po wszystkich pozycjach
+    self.check_out_products.grouped_by_product.each do |check_out_product|
+      # reguły ręczne mają priorytet
+      custom_rule = CustomRule.where("product_id = ? AND date_from <= ? AND date_to >= ?",
+                     check_out_product.product_id, self.date_started, self.date_started).first
+      if custom_rule
+        eval(custom_rule.rule)
+      # jeżeli brak ręcznych liczymyu normalnie
+      else
+        rules = Rule.where("product_id = ? AND count <= ? AND date_from <= ? AND date_to >= ?",
+                     check_out_product.product_id, check_out_product.product_count,
+                     self.date_started, self.date_started).
+                     order(count: :desc)
+        count_used_on_rules = 0
+        # zastosuj reguły ilościowe (największa możliwa ilość pierwsz)
+        if rules.count > 0
+          while (check_out_product.product_count - count_used_on_rules) >= rules.first.count
+            if (check_out_product.product_count - count_used_on_rules) >= rules.last.count
+              total += rules.last.price * rules.last.currency.value_in_base
+              count_used_on_rules += rules.last.count
+            else
+              rules.pop
+            end
+          end
+        end
+        # dodaj produkty nie łapiące się na żadne reguły
+        total += (check_out_product.product_count - count_used_on_rules) * check_out_product.product.price * check_out_product.product.currency.value_in_base
+      end
     end
     total
   end

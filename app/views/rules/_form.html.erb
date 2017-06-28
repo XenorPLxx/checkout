@@ -15,6 +15,11 @@
     <%= form.label :product_id %>
     <%= form.select(:product_id, Product.all.collect {|p| [ p.description, p.id ] }, { include_blank: false }) %>
   </div>
+  
+  <div class="field">
+    <%= form.label :currency_id %>
+    <%= form.select(:currency_id, Currency.all.collect {|p| [ p.abbr, p.id ] }, { include_blank: false }) %>
+  </div>
 
   <div class="field">
     <%= form.label :count %>

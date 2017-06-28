@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :product_id %>
-    <%= form.text_field :product_id, id: :custom_rule_product_id %>
+    <%= form.select(:product_id, Product.all.collect {|p| [ p.description, p.id ] }, { include_blank: false }) %>
   </div>
 
   <div class="field">

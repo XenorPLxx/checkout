@@ -12,7 +12,7 @@
 
 <p>
   <strong>Final total:</strong>
-  <%= @check_out.final_total %>
+  <%= number_to_currency(@check_out.final_total, locale: Currency.find_by(is_base: true).locale) %>
 </p>
 
 <% @check_out_products = @check_out.check_out_products %>

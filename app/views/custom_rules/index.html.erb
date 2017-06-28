@@ -16,7 +16,7 @@
   <tbody>
     <% @custom_rules.each do |custom_rule| %>
       <tr>
-        <td><%= custom_rule.product %></td>
+        <td><%= custom_rule.product.description %></td>
         <td><%= custom_rule.rule %></td>
         <td><%= custom_rule.date_from %></td>
         <td><%= custom_rule.date_to %></td>

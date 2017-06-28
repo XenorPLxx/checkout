@@ -5,13 +5,13 @@
     <tr>
       <th>Product</th>
       <th>Product count</th>
-      <th>Price</th>
+      <th>Normal price</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @check_out_products.group(:product_id).select("COUNT(*) as product_count, date_added, product_id, sum(price) AS sum_price").joins(:product).each do |check_out_product| %>
+    <% @check_out_products.grouped_by_product.each do |check_out_product| %>
       <tr>
         <td><%= check_out_product.product.description %></td>
         <td><%= check_out_product.product_count %></td>

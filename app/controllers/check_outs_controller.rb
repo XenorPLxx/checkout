@@ -24,10 +24,10 @@ class CheckOutsController < ApplicationController
   def scan
     respond_to do |format|
       if @check_out.scan(params[:scan])
-        format.html { render :edit, notice: "Scan successful." }
+        format.html { redirect_to "/check_outs/#{@check_out.id}/edit", notice: "Scan successful." }
         format.json { render json: @check_out.errors, status: :unprocessable_entity }
       else
-        format.html { render :edit, notice: "Product code invalid." }
+        format.html { redirect_to "/check_outs/#{@check_out.id}/edit", id: @check_out.id,notice: "Product code invalid." }
         format.json { render json: @check_out.errors, status: :unprocessable_entity }
       end
     end

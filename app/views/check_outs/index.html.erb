@@ -17,7 +17,7 @@
       <tr>
         <td><%= check_out.date_started %></td>
         <td><%= check_out.date_closed %></td>
-        <td><%= number_to_currency(check_out.final_total, locale: 'pl') %></td>
+        <td><%= number_to_currency(check_out.final_total, locale: Currency.find_by(is_base: true).locale) %></td>
         <td><%= link_to 'Show', check_out %></td>
         <td><%= link_to 'Edit', edit_check_out_path(check_out) if check_out.date_closed.nil? %></td>
         <td><%= link_to 'Destroy', check_out, method: :delete, data: { confirm: 'Are you sure?' } %></td>

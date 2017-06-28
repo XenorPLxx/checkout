@@ -69,6 +69,6 @@ class RulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rule_params
-      params.require(:rule).permit(:product_id, :count, :date_from, :date_to, :price)
+      params.require(:rule).permit(:product_id, :count, :date_from, :date_to, :price, :currency_id)
     end
 end
